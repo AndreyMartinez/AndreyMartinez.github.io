@@ -1,4 +1,5 @@
 import React from 'react';
+import img from '../../img/rmartinez.jpg'
 
 import './index.css'
 
@@ -23,7 +24,7 @@ function Header(props) {
                 <ul className="list-content right">
                     <li>
                     <a className="link" href="">
-                        <img className="img-profile" src="https://lh3.google.com/u/0/ogw/ADGmqu_BVkzxawtJymUyXdPBVR61_rjCuog0NpfBw5O7=s32-c-mo" alt="icon-raphael-martinez"/>
+                        <img className="img-profile" src={img} alt="icon-raphael-martinez"/>
                         </a>
                     </li>
                 </ul>
