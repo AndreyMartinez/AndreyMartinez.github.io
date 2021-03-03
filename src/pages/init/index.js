@@ -1,7 +1,11 @@
 import React from 'react'
-import { AiFillLinkedin, AiOutlineGithub, AiOutlineInstagram } from 'react-icons/ai'
+import { AiFillLinkedin, AiOutlineGithub, AiOutlineInstagram } from 'react-icons/ai';
 
-import Header from '../../components/header'
+import Header from '../../components/header';
+
+import aboutMe from '../../img/icons/location.svg';
+import experience from '../../img/icons/experience.svg';
+import knowledge from '../../img/icons/experiment.svg';
 
 import './index.css'
 
@@ -44,7 +48,16 @@ function Init() {
                         </div>
                     </div>
                 </section>
-                <section>
+                <section className="second-section">
+                    <div>
+                        <img className="second-part-icon" src={aboutMe} alt="aboutMe" />
+                    </div>
+                    <div>
+                        <img className="second-part-icon" src={experience} alt="experience" />
+                    </div>
+                    <div>
+                        <img className="second-part-icon" src={knowledge} alt="knowledge" />
+                    </div>
                 </section>
             </main>
         </>

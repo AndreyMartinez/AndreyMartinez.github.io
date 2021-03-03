@@ -55,3 +55,14 @@ margin: 1% 0;
 .span-text {
     margin: auto;
 }
+
+/* Second section  */
+
+.second-section{
+    display: flex;
+    justify-content: space-around;
+    margin: 3% 0;
+}
+.second-part-icon{
+    width: 180px;
+}
