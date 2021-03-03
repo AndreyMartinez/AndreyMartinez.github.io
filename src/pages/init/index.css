@@ -63,6 +63,33 @@ margin: 1% 0;
     justify-content: space-around;
     margin: 3% 0;
 }
+.content-second-section{
+    width: 32.5%;
+}
 .second-part-icon{
     width: 180px;
+    display: block;
+    margin: auto;
+}
+
+.text-second-section{
+    display: block;
+    margin: 3% auto 1% auto;
+    width: 70%;
+    height: 35%;
+    font-family: monospace;
+    font-size: 1.4em;
+}
+
+.button-second-section{
+    margin: 0 auto;
+    width: 180px;
+    height: 36px;
+    border-radius: 7px;
+    background: linear-gradient(55deg, #000000d1, #000000c4);
+    color: white;
+    font-size: 1em;
+    font-family: monospace;
+    box-shadow: 2px 2px white;
+    display: block;
 }

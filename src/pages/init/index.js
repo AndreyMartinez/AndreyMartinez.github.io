@@ -49,14 +49,21 @@ function Init() {
                     </div>
                 </section>
                 <section className="second-section">
-                    <div>
+                    <div className="content-second-section">
                         <img className="second-part-icon" src={aboutMe} alt="aboutMe" />
+                        <p className="text-second-section"> "Ser libre es gastar la mayor cantidad de tiempo de nuestra vida en aquello que nos gusta hacer" <br/>José “Pepe” Mujica</p>
+                        <button className="button-second-section">Sobre mi</button>
                     </div>
-                    <div>
+                    <div className="content-second-section">
                         <img className="second-part-icon" src={experience} alt="experience" />
+                        <p className="text-second-section"> "Muévete rápido y rompe objetos. Si no estás rompiendo cosas, no te estás moviendo lo suficientemente rápido.“ <br/>Mark Zuckerberg</p>
+                        <button className="button-second-section">Experiencia</button>
                     </div>
-                    <div>
+                    <div className="content-second-section">
                         <img className="second-part-icon" src={knowledge} alt="knowledge" />
+                        <p className="text-second-section"> "El día que dejamos de aprender, ése es el día en que morimos" <br/>Satya Nadella</p>
+                        <button className="button-second-section">Conocimiento</button>
+                        <p></p>
                     </div>
                 </section>
             </main>
