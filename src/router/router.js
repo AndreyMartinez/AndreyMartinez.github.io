@@ -5,17 +5,21 @@ import {
     Route,
 } from "react-router-dom";
 import Init from '../pages/init';
+import AboutMe from '../pages/aboutMe';
 
-function Router() {
+function RouterNavigation() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/">
+                <Route  exact path="/">
                     <Init />
+                </Route>
+                <Route exact path="/aboutMe">
+                    <AboutMe />
                 </Route>
             </Switch>
         </BrowserRouter>
     )
 }
 
-export default Router;
+export default RouterNavigation;

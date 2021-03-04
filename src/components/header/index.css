@@ -4,6 +4,9 @@
     height: 60px;
     font-size: 1.1em;
 }
+.black {
+    background-color: black;
+}
 
 .navigator {
     display: flex;
