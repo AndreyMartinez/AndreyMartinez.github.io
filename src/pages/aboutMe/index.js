@@ -7,10 +7,11 @@ import myIcon from '../../img/mysticker.webp'
 function AboutMe(props) {
     return (
         <>
-            <Header style="black"/>
+            <Header style="black" />
             <section>
                 <div>
-<img src={myIcon} alt="my-icon"/>
+                    <img src={myIcon} alt="my-icon" />
+                    <p>Raphael Andrey Martinez Velásquez</p>
                 </div>
                 <div></div>
             </section>
