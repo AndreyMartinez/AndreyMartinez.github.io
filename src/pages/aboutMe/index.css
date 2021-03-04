@@ -1,0 +1,16 @@
+.content{
+    display: flex;
+    justify-content: center;
+}
+.content-initial{
+    display: flex;
+}
+.my-icon{
+    width: 38%;
+    margin: auto 0 auto auto;
+}
+.title-name{
+    margin: auto 0;
+    font-family: monospace;
+    font-size: 2.4rem;
+}

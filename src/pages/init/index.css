@@ -30,32 +30,6 @@ margin: 1% 0;
     font-size: 1.8em;
 }
 
-.button{
-    margin: 0 1%;
-    width: 11%;
-    height: 36px;
-    border-radius: 7px;
-    background: linear-gradient(55deg, #000000d1, #0000007d);
-    color: white;
-    font-size: 1em;
-    font-family: monospace;
-    box-shadow: 2px 2px white;
-}
-
-.content-button{
-    display: flex;
-}
-
-.icon{
-    vertical-align: baseline;
-    height: 58%;
-    width: 18%;
-}
-
-.span-text {
-    margin: auto;
-}
-
 /* Second section  */
 
 .second-section{
