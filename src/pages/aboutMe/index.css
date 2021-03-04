@@ -10,7 +10,10 @@
     margin: auto 0 auto auto;
 }
 .title-name{
-    margin: auto 0;
     font-family: monospace;
     font-size: 2.4rem;
+}
+
+.content-title{
+    margin: auto 0;
 }

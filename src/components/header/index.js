@@ -8,20 +8,20 @@ import './index.css'
 
 function Header(props) {
     return (
-        <header className={`header ${props.style}`}>
+        <header className='header'>
             <nav className="navigator">
                 <ul className="list-content">
                     <li className="list">
-                        <NavLink className="link" to="/aboutMe">Sobre mi</NavLink>
+                        <NavLink className={`link ${props.style}`} to="/aboutMe">Sobre mi</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className="link" to="/">Experiencia</NavLink>
+                        <NavLink exact className={`link ${props.style}`} to="/">Experiencia</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className="link" to="/">Conocimiento</NavLink>
+                        <NavLink exact className={`link ${props.style}`} to="/">Conocimiento</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className="link" to="/">Contactame</NavLink>
+                        <NavLink exact className={`link ${props.style}`} to="/">Contactame</NavLink>
                     </li>
                 </ul>
                 <ul className="list-content right">

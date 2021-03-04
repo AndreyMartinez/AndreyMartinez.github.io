@@ -10,31 +10,32 @@ function SocialMediaButtons(props) {
         window.open(url, '_blank')
     }
     return (
-        <div>
-            <button className="button">
-                <div className="content-button" onClick={() => handleRedirectPages('https://www.linkedin.com/in/raphael-martinez')}>
+        <>
+            <button className={`button ${props.style}-button`} style={{width:`${props.width ? props.width : 11}%`}} onClick={() => handleRedirectPages('https://www.linkedin.com/in/raphael-martinez')}>
+                <div className="content-button">
                     <AiFillLinkedin className="icon" />
                     <span className="span-text">Linkedin</span>
                 </div>
             </button>
-            <button className="button" onClick={() => handleRedirectPages('https://github.com/AndreyMartinez')}>
+            <button className={`button ${props.style}-button`} style={{width:`${props.width ? props.width : 11}%`}} onClick={() => handleRedirectPages('https://github.com/AndreyMartinez')}>
                 <div className="content-button">
                     <AiOutlineGithub className="icon" />
                     <span className="span-text"> Github</span>
                 </div>
             </button>
-            <button className="button" onClick={() => handleRedirectPages('https://www.instagram.com/andrey_martinez98/')}>
+            <button className={`button ${props.style}-button`} style={{width:`${props.width ? props.width : 11}%`}} onClick={() => handleRedirectPages('https://www.instagram.com/andrey_martinez98/')}>
                 <div className="content-button">
                     <AiOutlineInstagram className="icon" />
                     <span className="span-text">  Instagram</span>
                 </div>
             </button>
-        </div>
+        </>
     )
 }
 
 SocialMediaButtons.propsTypes = {
-    style: PropTypes.oneOf(['white', 'black']).isRequired
+    style: PropTypes.oneOf(['white', 'black']).isRequired,
+    width: PropTypes.number,
 }
 
 export default SocialMediaButtons;

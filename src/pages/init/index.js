@@ -22,23 +22,25 @@ function Init() {
                         <div className="subtitle">
                             <p>Bienvenido a mi sitio, bienvenido a mi hoja de vida, bienvenido a un poco de mi.</p>
                         </div>
-                 <SocialMediaButtons style="white"/>
+                        <div>
+                            <SocialMediaButtons style="white" />
+                        </div>
                     </div>
                 </section>
                 <section className="second-section">
                     <div className="content-second-section">
                         <img className="second-part-icon" src={aboutMe} alt="aboutMe" />
-                        <p className="text-second-section"> "Ser libre es gastar la mayor cantidad de tiempo de nuestra vida en aquello que nos gusta hacer" <br/>José “Pepe” Mujica</p>
+                        <p className="text-second-section"> "Ser libre es gastar la mayor cantidad de tiempo de nuestra vida en aquello que nos gusta hacer" <br />José “Pepe” Mujica</p>
                         <button className="button-second-section">Sobre mi</button>
                     </div>
                     <div className="content-second-section">
                         <img className="second-part-icon" src={experience} alt="experience" />
-                        <p className="text-second-section"> "Muévete rápido y rompe objetos. Si no estás rompiendo cosas, no te estás moviendo lo suficientemente rápido.“ <br/>Mark Zuckerberg</p>
+                        <p className="text-second-section"> "Muévete rápido y rompe objetos. Si no estás rompiendo cosas, no te estás moviendo lo suficientemente rápido.“ <br />Mark Zuckerberg</p>
                         <button className="button-second-section">Experiencia</button>
                     </div>
                     <div className="content-second-section">
                         <img className="second-part-icon" src={knowledge} alt="knowledge" />
-                        <p className="text-second-section"> "El día que dejamos de aprender, ése es el día en que morimos" <br/>Satya Nadella</p>
+                        <p className="text-second-section"> "El día que dejamos de aprender, ése es el día en que morimos" <br />Satya Nadella</p>
                         <button className="button-second-section">Conocimiento</button>
                         <p></p>
                     </div>
