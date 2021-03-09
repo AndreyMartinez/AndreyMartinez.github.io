@@ -8,7 +8,7 @@ import './index.css'
 
 function Header(props) {
     return (
-        <header className='header'>
+        <header className={`header-${props.style}`}>
             <nav className="navigator">
                 <ul className="list-content">
                     <li className="list">

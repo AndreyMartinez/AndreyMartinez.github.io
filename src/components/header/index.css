@@ -5,6 +5,10 @@
     font-size: 1.1em;
 }
 
+.header-black{
+    box-shadow: 0px 1px 5px 0px;
+}
+
 .navigator {
     display: flex;
     justify-content: space-between;
