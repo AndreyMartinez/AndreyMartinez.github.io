@@ -6,12 +6,12 @@
 .title-content {
     background: linear-gradient(#000000e0, #77777726), url('../../img/home.jpg') no-repeat;
     background-size: cover;
-    height: 80%;
+    height: 100%;
     width: 100%;
 }
 
 .title-subtitle-content{
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,42 +28,4 @@ margin: 1% 0;
 .subtitle{
     width: 56%;
     font-size: 1.8em;
-}
-
-/* Second section  */
-
-.second-section{
-    display: flex;
-    justify-content: space-around;
-    margin: 3% 0;
-}
-.content-second-section{
-    width: 32.5%;
-}
-.second-part-icon{
-    width: 180px;
-    display: block;
-    margin: auto;
-}
-
-.text-second-section{
-    display: block;
-    margin: 3% auto 1% auto;
-    width: 70%;
-    height: 35%;
-    font-family: monospace;
-    font-size: 1.4em;
-}
-
-.button-second-section{
-    margin: 0 auto;
-    width: 180px;
-    height: 36px;
-    border-radius: 7px;
-    background: linear-gradient(55deg, #000000d1, #000000c4);
-    color: white;
-    font-size: 1em;
-    font-family: monospace;
-    box-shadow: 2px 2px white;
-    display: block;
 }
