@@ -8,20 +8,20 @@ import './index.css'
 
 function Header(props) {
     return (
-        <header className={`header-${props.style}`}>
+        <header className={`header-${props.styleType}`}>
             <nav className="navigator">
                 <ul className="list-content">
                     <li className="list">
-                        <NavLink className={`link ${props.style}`} to="/aboutMe">Sobre mi</NavLink>
+                        <NavLink className={`link ${props.styleType}`} to="/aboutMe">Sobre mi</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className={`link ${props.style}`} to="/">Experiencia</NavLink>
+                        <NavLink exact className={`link ${props.styleType}`} to="/">Experiencia</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className={`link ${props.style}`} to="/">Conocimiento</NavLink>
+                        <NavLink exact className={`link ${props.styleType}`} to="/">Conocimiento</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className={`link ${props.style}`} to="/">Contactame</NavLink>
+                        <NavLink exact className={`link ${props.styleType}`} to="/">Contactame</NavLink>
                     </li>
                 </ul>
                 <ul className="list-content right">
@@ -36,7 +36,7 @@ function Header(props) {
     )
 }
 Header.propTypes = {
-    style: PropTypes.oneOf(['black', 'white']).isRequired
+    styleType: PropTypes.oneOf(['black', 'white']).isRequired
 }
 
 export default Header;

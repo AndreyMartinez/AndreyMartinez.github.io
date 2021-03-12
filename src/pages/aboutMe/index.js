@@ -7,15 +7,13 @@ import myIcon from '../../img/mysticker.webp';
 import Vida from '../../img/vida.jpg';
 import Friend from '../../img/friend.jpg';
 import Mujica from '../../img/pepe.jpg';
-import Ginni from '../../img/ginni.jpeg';
-import Joe from '../../img/joe.jpeg'
 
 import './index.css'
 
 function AboutMe(props) {
     return (
         <>
-            <Header style="black" />
+            <Header styleType="black" />
             <section className="content">
                 <div className="content-initial">
                     <img src={myIcon} alt="my-icon" className="my-icon" />
@@ -29,7 +27,7 @@ function AboutMe(props) {
                        y ayudar a cuidar nuestra hermosa flora y fauna que ha sido tan golpeada. Practico atletismo y fútbol.
                         Apasionado por la libertad de hacer lo que me gusta, conocer el mundo y otras culturas mi prioridad.</p>
                         <div className="content-button">
-                            <SocialMediaButtons style="black" width={22} />
+                            <SocialMediaButtons styleType="black" width={22} />
                         </div>
                     </div>
                 </div>
