@@ -50,7 +50,7 @@ function AboutMe(props) {
                     <p className="title-name"> Soy las personas que me rodean</p>
                     <p className="subtitle-size">En mi pequeño espacio aprovecho para dar gracias a las personas, que me corrigieron,
                     que me han hecho mejor, que me enseñan, que me brindan un consejo y su preciada amistad. Uno es las personas que
-                    te rodean y he tenido el placer de trabar con grandes personas y seres humanos. Carlos, Camilos, Miguel, Andrea
+                    te rodean y he tenido el placer de trabar con grandes personas y seres humanos. Carlos, Camilos, Miguel, Andrea,
                     Juan Pablos, Oscar, Paola, Sebastian, gracias a todos y a las personas que aún falta por conocer.</p>
                 </div>
 
