@@ -28,13 +28,13 @@ function Knowledge() {
                 <div className="content-text-second">
                     <p className="title-name text-white"> Frontend</p>
                     <p className="text-white subtitle-size">Soy especialista en desarrollo frontend,
-                    me encanta trabajar javascript y su flexibilidad de desarrollo. Tengo conocimiento en coffeescript, handlebars,
-                 Vue, Angular, React, Svelte, react native, ionic, webpack, npm, yarn, typescript, eslint, jest, karma.</p>
+                    me encanta trabajar javascript y su flexibilidad de desarrollo. Tengo conocimiento en Coffeescript, Handlebars,
+                 Vue, Angular, React, Svelte, React Native, Ionic, Webpack, Npm, Yarn, Typescript, Eslint, Jest, Karma, Sass, Less.</p>
                     <p className="title-name text-white"> Backend</p>
                     <p className="text-white subtitle-size">También he desarrollado en  backend, trabajando con tecnologias y lenguajes
-                    de programación como: java, express, node, go, graphql.</p>
+                    de programación como: Java, Express, node, Go, Graphql.</p>
                     <p className="title-name text-white"> Bases de datos</p>
-                    <p className="text-white subtitle-size">También he trabajado con bases de datos, trabajando con: Mysql, Postgresql, MongoDB.</p>
+                    <p className="text-white subtitle-size">También he trabajado con bases de datos, trabajando con: Mysql, Postgresql, MongoDB, Firebase.</p>
                     <p className="title-name text-white">Otros servicios y tecnologias</p>
                     <p className="text-white subtitle-size">También he trabajado con servicios de nube como: Google, Ibm, Azure en proveer servicios
                     de infraestructura y consumir servicios de IOT y IA.</p>
