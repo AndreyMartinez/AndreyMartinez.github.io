@@ -7,7 +7,7 @@ import {
 import Init from '../pages/init';
 import AboutMe from '../pages/aboutMe';
 import Experience from '../pages/experience';
-
+import Knowledge from '../pages/knowledge';
 function RouterNavigation() {
     return (
         <BrowserRouter>
@@ -20,6 +20,9 @@ function RouterNavigation() {
                 </Route>
                 <Route exact path="/experience">
                     <Experience />
+                </Route>
+                <Route exact path="/knowledge">
+                    <Knowledge />
                 </Route>
             </Switch>
         </BrowserRouter>
