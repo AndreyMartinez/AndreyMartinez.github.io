@@ -18,7 +18,7 @@ function Header(props) {
                         <NavLink exact className={`link ${props.styleType}`} to="/experience">Experiencia</NavLink>
                     </li>
                     <li className="list">
-                        <NavLink exact className={`link ${props.styleType}`} to="/">Conocimiento</NavLink>
+                        <NavLink exact className={`link ${props.styleType}`} to="/knowledge">Conocimiento</NavLink>
                     </li>
                     <li className="list">
                         <NavLink exact className={`link ${props.styleType}`} to="/">Contactame</NavLink>
