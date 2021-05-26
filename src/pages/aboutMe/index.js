@@ -10,7 +10,7 @@ import Mujica from '../../img/pepe.jpg';
 
 import './index.css'
 
-function AboutMe(props) {
+function AboutMe() {
     return (
         <>
             <Header styleType="black" />
