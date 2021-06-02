@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '../../components/header';
+// import Header from '../../components/header';
 import SocialMediaButtons from '../../components/socialMediaButtons';
 
 import myIcon from '../../img/mysticker.webp';
@@ -13,7 +13,7 @@ import './index.css'
 function AboutMe() {
     return (
         <>
-            <Header styleType="black" />
+            {/* <Header styleType="black" /> */}
             <section className="content">
                 <div className="content-initial">
                     <img src={myIcon} alt="my-icon" className="my-icon" />

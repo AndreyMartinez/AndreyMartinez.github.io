@@ -1,10 +1,14 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import AboutMe from '../../pages/aboutMe'
+import AboutMe from './index'
 
 describe('<AboutMe /> render', () => {
+    const aboutMe = mount(AboutMe);
     test('render component AboutMe', () => {
-        const aboutMe = mount(AboutMe);
         expect(aboutMe.length).toEqual(1);
     })
+
+    // test('find first section', () => {
+    //    expect(aboutMe)
+    // })
 })
