@@ -8,6 +8,7 @@
 <meta property="og:title" content="Raphael Martínez — Ingeniero de Software Senior">
 <meta property="og:description" content="Once años construyendo productos web a gran escala. Arquitectura fullstack, interfaces e IA aplicada.">
 <meta property="og:type" content="website">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,6 +31,28 @@
     --ease:cubic-bezier(.22,.61,.36,1);
   }
 
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#111315;
+      --paper-alt:#17191c;
+      --ink:#F1F2F4;
+      --ink-soft:#9BA1AA;
+      --ink-faint:#686E77;
+      --rule:#2A2D31;
+      --accent:#39C2A6;
+    }
+  }
+
+  :root[data-theme="dark"]{
+    --paper:#111315;
+    --paper-alt:#17191c;
+    --ink:#F1F2F4;
+    --ink-soft:#9BA1AA;
+    --ink-faint:#686E77;
+    --rule:#2A2D31;
+    --accent:#39C2A6;
+  }
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -39,6 +62,7 @@
     font-family:var(--body);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    transition:background-color .4s var(--ease),color .4s var(--ease);
   }
 
   a{color:inherit;}
@@ -88,6 +112,65 @@
   }
 
   @media (max-width:900px){.spine{display:none;}}
+
+  /* ============ Controles (idioma / tema) ============ */
+
+  .controls{
+    position:fixed;
+    top:20px;
+    right:max(18px,2.4vw);
+    z-index:50;
+    display:flex;
+    gap:14px;
+  }
+
+  .switch{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:none;
+    border:none;
+    padding:4px 2px;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .switch-label{transition:color .3s var(--ease);}
+  .switch[aria-checked="false"] .switch-label--off,
+  .switch[aria-checked="true"] .switch-label--on{color:var(--ink);}
+
+  .switch-track{
+    position:relative;
+    width:28px;height:15px;
+    border-radius:20px;
+    border:1px solid var(--rule);
+    background:var(--paper-alt);
+    transition:border-color .3s var(--ease);
+  }
+  .switch:hover .switch-track{border-color:var(--accent);}
+
+  .switch-knob{
+    position:absolute;
+    top:1px;left:1px;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--ink-faint);
+    transition:transform .3s var(--ease),background .3s var(--ease);
+  }
+  .switch[aria-checked="true"] .switch-knob{
+    transform:translateX(13px);
+    background:var(--accent);
+  }
+
+  .switch:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+  @media (max-width:760px){
+    .controls{top:16px;gap:10px;}
+  }
 
   /* ============ Revelados por scroll ============ */
 
@@ -190,7 +273,7 @@
   /* ============ Secciones ============ */
 
   .band{padding:96px 0;border-top:1px solid var(--rule);}
-  .band.alt{background:var(--paper-alt);}
+  .band.alt{background:var(--paper-alt);transition:background-color .4s var(--ease);}
 
   .band-head{
     display:flex;
@@ -391,7 +474,7 @@
     border-radius:3px;
     display:flex;align-items:center;justify-content:center;
     overflow:hidden;
-    background:var(--paper);
+    background:#FFFFFF;
   }
   .logo-cell img{
     max-width:76%;max-height:64%;
@@ -460,6 +543,7 @@
   }
   .contact-grid div{color:var(--ink-soft);line-height:1.85;}
   .contact-grid span{display:block;color:var(--ink-faint);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
+  .contact-grid span.cval{display:inline;color:inherit;font-size:inherit;letter-spacing:normal;text-transform:none;margin-bottom:0;}
   .contact-grid a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule);transition:color .3s var(--ease),border-color .3s var(--ease);}
   .contact-grid a:hover{color:var(--accent);border-color:var(--accent);}
 
@@ -503,25 +587,38 @@
 
 <div class="spine" aria-hidden="true"><div class="spine-fill" id="spineFill"></div></div>
 
+<div class="controls">
+  <button type="button" class="switch" id="langSwitch" role="switch" aria-checked="false" aria-label="Idioma / Language">
+    <span class="switch-label switch-label--off">ES</span>
+    <span class="switch-track"><span class="switch-knob"></span></span>
+    <span class="switch-label switch-label--on">EN</span>
+  </button>
+  <button type="button" class="switch" id="themeSwitch" role="switch" aria-checked="false" aria-label="Tema claro / oscuro · Light / dark theme">
+    <span class="switch-label switch-label--off" aria-hidden="true">☀</span>
+    <span class="switch-track"><span class="switch-knob"></span></span>
+    <span class="switch-label switch-label--on" aria-hidden="true">☾</span>
+  </button>
+</div>
+
 <main class="wrap">
 
   <!-- ===== Portada ===== -->
   <section class="hero" id="inicio">
     <div>
-      <p class="eyebrow stagger d1">Ciudad de México · Disponible para proyectos</p>
+      <p class="eyebrow stagger d1" data-es="Ciudad de México · Disponible para proyectos" data-en="Mexico City · Available for projects">Ciudad de México · Disponible para proyectos</p>
       <h1>
         <span class="ln"><span>Raphael</span></span>
         <span class="ln"><span>Martínez</span></span>
       </h1>
-      <p class="hero-sub stagger d2">Ingeniero de Software Senior · Tech Lead</p>
-      <p class="hero-lede stagger d3">
+      <p class="hero-sub stagger d2" data-es="Ingeniero de Software Senior · Tech Lead" data-en="Senior Software Engineer · Tech Lead">Ingeniero de Software Senior · Tech Lead</p>
+      <p class="hero-lede stagger d3" data-es="Once años construyendo productos web a gran escala. Los últimos seis en Mercado Libre, trabajando en publicación de ítems, CX, moderaciones, reputaciones y clips. Diseño la arquitectura, la construyo y acompaño al equipo que la mantiene — hoy con el 80% de mi flujo corriendo sobre agentes de IA." data-en="Eleven years building web products at scale. The last six at Mercado Libre, working on item publishing, CX, moderation, reputation and clips. I design the architecture, build it, and support the team that maintains it — today with 80% of my workflow running on AI agents.">
         Once años construyendo productos web a gran escala. Los últimos seis en Mercado Libre,
         trabajando en publicación de ítems, CX, moderaciones, reputaciones y clips. Diseño la
         arquitectura, la construyo y acompaño al equipo que la mantiene — hoy con el 80% de mi
         flujo corriendo sobre agentes de IA.
       </p>
       <p class="hero-links stagger d4">
-        <a href="#trabajo">Ver trabajo</a>
+        <a href="#trabajo" data-es="Ver trabajo" data-en="View work">Ver trabajo</a>
         <a href="mailto:ram.v98@hotmail.com">ram.v98@hotmail.com</a>
         <a href="https://github.com/AndreyMartinez" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/raphaelmartinez" target="_blank" rel="noopener">LinkedIn</a>
@@ -533,7 +630,7 @@
   <section class="band" id="trabajo">
     <div class="band-head rise">
       <span class="band-num">01</span>
-      <h2 class="band-title">Trabajo</h2>
+      <h2 class="band-title" data-es="Trabajo" data-en="Work">Trabajo</h2>
     </div>
 
     <div class="projects">
@@ -542,18 +639,18 @@
         <span class="proj-idx">001</span>
         <span>
           <h3 class="proj-name">Villareal</h3>
-          <p class="proj-desc">Plataforma SaaS para clubes y academias de fútbol. Subes el video del partido y la IA detecta las jugadas clave —goles, atajadas, errores— con el segundo exacto y el jugador involucrado. Encima: scouting con estadísticas por jugador, control de asistencia a entrenamientos y cobro de mensualidades en línea con Mercado Pago. Diseño de producto, arquitectura y desarrollo full-stack, con build móvil nativa.</p>
-          <span class="tags"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">IA · Video</span><span class="tag">Firebase</span><span class="tag">Mercado Pago</span><span class="tag">Capacitor</span></span>
+          <p class="proj-desc" data-es="Plataforma SaaS para clubes y academias de fútbol. Subes el video del partido y la IA detecta las jugadas clave —goles, atajadas, errores— con el segundo exacto y el jugador involucrado. Encima: scouting con estadísticas por jugador, control de asistencia a entrenamientos y cobro de mensualidades en línea con Mercado Pago. Diseño de producto, arquitectura y desarrollo full-stack, con build móvil nativa." data-en="SaaS platform for football clubs and academies. Upload the match video and the AI detects key plays —goals, saves, mistakes— down to the exact second and player involved. On top of that: player scouting stats, training attendance tracking, and online monthly-fee billing with Mercado Pago. Product design, architecture and full-stack development, with a native mobile build.">Plataforma SaaS para clubes y academias de fútbol. Subes el video del partido y la IA detecta las jugadas clave —goles, atajadas, errores— con el segundo exacto y el jugador involucrado. Encima: scouting con estadísticas por jugador, control de asistencia a entrenamientos y cobro de mensualidades en línea con Mercado Pago. Diseño de producto, arquitectura y desarrollo full-stack, con build móvil nativa.</p>
+          <span class="tags"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag" data-es="IA · Video" data-en="AI · Video">IA · Video</span><span class="tag">Firebase</span><span class="tag">Mercado Pago</span><span class="tag">Capacitor</span></span>
         </span>
-        <span class="proj-go">Caso de estudio</span>
+        <span class="proj-go" data-es="Caso de estudio" data-en="Case study">Caso de estudio</span>
       </div>
 
       <a class="proj rise" href="https://listado.mercadolibre.com.mx/_CustId_2275234084" target="_blank" rel="noopener">
         <span class="proj-idx">002</span>
         <span>
-          <h3 class="proj-name">Tienda de impresión 3D</h3>
-          <p class="proj-desc">Catálogo propio de productos diseñados y fabricados con impresión 3D, publicado y operando en Mercado Libre México. Del modelado a la producción y la venta.</p>
-          <span class="tags"><span class="tag">Diseño de producto</span><span class="tag">Impresión 3D</span><span class="tag">E-commerce</span></span>
+          <h3 class="proj-name" data-es="Tienda de impresión 3D" data-en="3D printing store">Tienda de impresión 3D</h3>
+          <p class="proj-desc" data-es="Catálogo propio de productos diseñados y fabricados con impresión 3D, publicado y operando en Mercado Libre México. Del modelado a la producción y la venta." data-en="In-house catalog of products designed and manufactured with 3D printing, published and running on Mercado Libre Mexico. From modeling to production and sale.">Catálogo propio de productos diseñados y fabricados con impresión 3D, publicado y operando en Mercado Libre México. Del modelado a la producción y la venta.</p>
+          <span class="tags"><span class="tag" data-es="Diseño de producto" data-en="Product design">Diseño de producto</span><span class="tag" data-es="Impresión 3D" data-en="3D printing">Impresión 3D</span><span class="tag">E-commerce</span></span>
         </span>
         <span class="proj-go">Mercado Libre ↗</span>
       </a>
@@ -561,9 +658,9 @@
       <a class="proj rise" href="https://weight-bats-10776490.figma.site" target="_blank" rel="noopener">
         <span class="proj-idx">003</span>
         <span>
-          <h3 class="proj-name">Diseños e interfaces</h3>
-          <p class="proj-desc">Trabajo de diseño de producto y exploración de interfaces, publicado desde Figma.</p>
-          <span class="tags"><span class="tag">UI</span><span class="tag">Figma</span><span class="tag">Sistemas de diseño</span></span>
+          <h3 class="proj-name" data-es="Diseños e interfaces" data-en="Designs &amp; interfaces">Diseños e interfaces</h3>
+          <p class="proj-desc" data-es="Trabajo de diseño de producto y exploración de interfaces, publicado desde Figma." data-en="Product design work and interface exploration, published from Figma.">Trabajo de diseño de producto y exploración de interfaces, publicado desde Figma.</p>
+          <span class="tags"><span class="tag">UI</span><span class="tag">Figma</span><span class="tag" data-es="Sistemas de diseño" data-en="Design systems">Sistemas de diseño</span></span>
         </span>
         <span class="proj-go">Figma ↗</span>
       </a>
@@ -572,7 +669,7 @@
         <span class="proj-idx">004</span>
         <span>
           <h3 class="proj-name">sql-injections</h3>
-          <p class="proj-desc">Librería ligera de código abierto que detecta patrones de inyección SQL en campos de formulario. Compatible con React, Vue, Angular y Node. Publicada en npm.</p>
+          <p class="proj-desc" data-es="Librería ligera de código abierto que detecta patrones de inyección SQL en campos de formulario. Compatible con React, Vue, Angular y Node. Publicada en npm." data-en="Lightweight open-source library that detects SQL-injection patterns in form fields. Compatible with React, Vue, Angular and Node. Published on npm.">Librería ligera de código abierto que detecta patrones de inyección SQL en campos de formulario. Compatible con React, Vue, Angular y Node. Publicada en npm.</p>
           <span class="tags"><span class="tag">Open source</span><span class="tag">npm</span><span class="tag">JavaScript</span></span>
         </span>
         <span class="proj-go">npm ↗</span>
@@ -581,8 +678,8 @@
       <a class="proj rise" href="https://github.com/AndreyMartinez" target="_blank" rel="noopener">
         <span class="proj-idx">005</span>
         <span>
-          <h3 class="proj-name">Repositorios</h3>
-          <p class="proj-desc">Código abierto, experimentos y librerías: front-end, herramientas y pruebas de concepto acumuladas a lo largo de los años, incluida la librería sql-injections publicada en npm.</p>
+          <h3 class="proj-name" data-es="Repositorios" data-en="Repositories">Repositorios</h3>
+          <p class="proj-desc" data-es="Código abierto, experimentos y librerías: front-end, herramientas y pruebas de concepto acumuladas a lo largo de los años, incluida la librería sql-injections publicada en npm." data-en="Open source, experiments and libraries: front-end work, tools and proofs of concept accumulated over the years, including the sql-injections library published on npm.">Código abierto, experimentos y librerías: front-end, herramientas y pruebas de concepto acumuladas a lo largo de los años, incluida la librería sql-injections publicada en npm.</p>
           <span class="tags"><span class="tag">GitHub</span><span class="tag">Open source</span><span class="tag">JavaScript</span></span>
         </span>
         <span class="proj-go">GitHub ↗</span>
@@ -595,20 +692,20 @@
   <section class="band alt" id="experiencia">
     <div class="band-head rise">
       <span class="band-num">02</span>
-      <h2 class="band-title">Trayectoria</h2>
+      <h2 class="band-title" data-es="Trayectoria" data-en="Experience">Trayectoria</h2>
     </div>
 
     <article class="role-entry rise">
-      <div class="when"><b>2019</b>Actualidad</div>
+      <div class="when"><b>2019</b><span data-es="Actualidad" data-en="Present">Actualidad</span></div>
       <div class="rail"></div>
       <div>
         <h3 class="company">Mercado Libre</h3>
         <p class="position">Senior Software Engineer</p>
         <ul class="points">
-          <li>Productos de alta escala en publicación de ítems, CX, moderaciones, reputaciones y clips, con React, Next.js y GraphQL sobre servicios en Go.</li>
-          <li>Herramientas con IA que elevan la calidad de las publicaciones y limpian la vidriera, con efecto directo sobre la conversión de ventas.</li>
-          <li>Llevé el 80% de mi flujo de trabajo a herramientas de IA mediante agentes, skills y servidores MCP, bajo desarrollo guiado por especificación.</li>
-          <li>Mentoría a más de 15 ingenieros; definí estándares de código y gobernanza sobre el uso de IA en el equipo.</li>
+          <li data-es="Productos de alta escala en publicación de ítems, CX, moderaciones, reputaciones y clips, con React, Next.js y GraphQL sobre servicios en Go." data-en="High-scale products in item publishing, CX, moderation, reputation and clips, with React, Next.js and GraphQL on top of services in Go.">Productos de alta escala en publicación de ítems, CX, moderaciones, reputaciones y clips, con React, Next.js y GraphQL sobre servicios en Go.</li>
+          <li data-es="Herramientas con IA que elevan la calidad de las publicaciones y limpian la vidriera, con efecto directo sobre la conversión de ventas." data-en="Built AI-powered tools that raise listing quality and clean up the storefront, with a direct effect on sales conversion.">Herramientas con IA que elevan la calidad de las publicaciones y limpian la vidriera, con efecto directo sobre la conversión de ventas.</li>
+          <li data-es="Llevé el 80% de mi flujo de trabajo a herramientas de IA mediante agentes, skills y servidores MCP, bajo desarrollo guiado por especificación." data-en="Moved 80% of my workflow onto AI tooling by building agents, skills and MCP servers under specification-driven development.">Llevé el 80% de mi flujo de trabajo a herramientas de IA mediante agentes, skills y servidores MCP, bajo desarrollo guiado por especificación.</li>
+          <li data-es="Mentoría a más de 15 ingenieros; definí estándares de código y gobernanza sobre el uso de IA en el equipo." data-en="Mentored 15+ engineers; defined the team's code standards and governance around AI usage.">Mentoría a más de 15 ingenieros; definí estándares de código y gobernanza sobre el uso de IA en el equipo.</li>
         </ul>
       </div>
     </article>
@@ -618,23 +715,23 @@
       <div class="rail"></div>
       <div>
         <h3 class="company">Periferia IT Group</h3>
-        <p class="position">Tech Lead · Consultor</p>
+        <p class="position" data-es="Tech Lead · Consultor" data-en="Tech Lead · Consultant">Tech Lead · Consultor</p>
         <ul class="points">
-          <li>Lideré equipos de hasta 10 personas en 4 proyectos web y móviles con React, Angular, React Native e Ionic.</li>
-          <li>Ciclo completo en backends Java (Spring), Node.js y MongoDB, del diseño al despliegue.</li>
-          <li>Definí las arquitecturas base con las que varias compañías arrancaron su transformación digital; siguen en producción hoy.</li>
+          <li data-es="Lideré equipos de hasta 10 personas en 4 proyectos web y móviles con React, Angular, React Native e Ionic." data-en="Led teams of up to 10 people across 4 web and mobile projects with React, Angular, React Native and Ionic.">Lideré equipos de hasta 10 personas en 4 proyectos web y móviles con React, Angular, React Native e Ionic.</li>
+          <li data-es="Ciclo completo en backends Java (Spring), Node.js y MongoDB, del diseño al despliegue." data-en="Full lifecycle on Java (Spring), Node.js and MongoDB backends, from design to deployment.">Ciclo completo en backends Java (Spring), Node.js y MongoDB, del diseño al despliegue.</li>
+          <li data-es="Definí las arquitecturas base con las que varias compañías arrancaron su transformación digital; siguen en producción hoy." data-en="Defined the base architectures several companies used to kick off their digital transformation; still in production today.">Definí las arquitecturas base con las que varias compañías arrancaron su transformación digital; siguen en producción hoy.</li>
         </ul>
       </div>
     </article>
 
     <article class="role-entry rise minor">
-      <div class="when"><b>2018</b>4 meses</div>
+      <div class="when"><b>2018</b><span data-es="4 meses" data-en="4 months">4 meses</span></div>
       <div class="rail"></div>
       <div>
         <h3 class="company">SmartSoft Solutions</h3>
-        <p class="position">Desarrollador de Software</p>
+        <p class="position" data-es="Desarrollador de Software" data-en="Software Developer">Desarrollador de Software</p>
         <ul class="points">
-          <li>Soluciones web con React y Java para clientes corporativos.</li>
+          <li data-es="Soluciones web con React y Java para clientes corporativos." data-en="Web solutions with React and Java for corporate clients.">Soluciones web con React y Java para clientes corporativos.</li>
         </ul>
       </div>
     </article>
@@ -644,10 +741,10 @@
       <div class="rail"></div>
       <div>
         <h3 class="company">Conexia</h3>
-        <p class="position">Analista de Desarrollo</p>
+        <p class="position" data-es="Analista de Desarrollo" data-en="Development Analyst">Analista de Desarrollo</p>
         <ul class="points">
-          <li>Aplicaciones híbridas con Ionic y Angular para servicios críticos de salud.</li>
-          <li>Optimización de módulos Java: cuellos de botella en procesamiento de datos y tiempos de respuesta.</li>
+          <li data-es="Aplicaciones híbridas con Ionic y Angular para servicios críticos de salud." data-en="Hybrid applications with Ionic and Angular for critical healthcare services.">Aplicaciones híbridas con Ionic y Angular para servicios críticos de salud.</li>
+          <li data-es="Optimización de módulos Java: cuellos de botella en procesamiento de datos y tiempos de respuesta." data-en="Optimized Java modules: data-processing bottlenecks and response times.">Optimización de módulos Java: cuellos de botella en procesamiento de datos y tiempos de respuesta.</li>
         </ul>
       </div>
     </article>
@@ -657,10 +754,10 @@
       <div class="rail"></div>
       <div>
         <h3 class="company">IT Professionals</h3>
-        <p class="position">Desarrollador de Software</p>
+        <p class="position" data-es="Desarrollador de Software" data-en="Software Developer">Desarrollador de Software</p>
         <ul class="points">
-          <li>Plataformas web de visualización de datos en tiempo real con Angular y Node.js.</li>
-          <li>Gestión y optimización de bases PostgreSQL.</li>
+          <li data-es="Plataformas web de visualización de datos en tiempo real con Angular y Node.js." data-en="Real-time data visualization web platforms with Angular and Node.js.">Plataformas web de visualización de datos en tiempo real con Angular y Node.js.</li>
+          <li data-es="Gestión y optimización de bases PostgreSQL." data-en="Managed and optimized PostgreSQL databases.">Gestión y optimización de bases PostgreSQL.</li>
         </ul>
       </div>
     </article>
@@ -670,7 +767,7 @@
   <section class="band" id="clientes">
     <div class="band-head rise">
       <span class="band-num">03</span>
-      <h2 class="band-title">Productos entregados para</h2>
+      <h2 class="band-title" data-es="Productos entregados para" data-en="Products delivered for">Productos entregados para</h2>
     </div>
 
     <div class="marquee rise">
@@ -707,21 +804,21 @@
     <div class="rise">
       <div class="stack-row"><div class="stack-key">Frontend</div><div class="stack-val">React · Next.js · Angular · GraphQL · React Native · Ionic</div></div>
       <div class="stack-row"><div class="stack-key">Backend</div><div class="stack-val">Go · Node.js · Java (Spring)</div></div>
-      <div class="stack-row"><div class="stack-key">Nube y datos</div><div class="stack-val">Google Cloud · Firebase · PostgreSQL · MongoDB</div></div>
-      <div class="stack-row"><div class="stack-key">IA aplicada</div><div class="stack-val">Agentes · Skills · Servidores MCP · Desarrollo guiado por especificación · Claude · Gemini</div></div>
-      <div class="stack-row"><div class="stack-key">Práctica</div><div class="stack-val">Arquitectura fullstack · Liderazgo técnico y mentoría · Diseño de interfaces</div></div>
+      <div class="stack-row"><div class="stack-key" data-es="Nube y datos" data-en="Cloud &amp; data">Nube y datos</div><div class="stack-val">Google Cloud · Firebase · PostgreSQL · MongoDB</div></div>
+      <div class="stack-row"><div class="stack-key" data-es="IA aplicada" data-en="Applied AI">IA aplicada</div><div class="stack-val" data-es="Agentes · Skills · Servidores MCP · Desarrollo guiado por especificación · Claude · Gemini" data-en="Agents · Skills · MCP servers · Specification-driven development · Claude · Gemini">Agentes · Skills · Servidores MCP · Desarrollo guiado por especificación · Claude · Gemini</div></div>
+      <div class="stack-row"><div class="stack-key" data-es="Práctica" data-en="Practice">Práctica</div><div class="stack-val" data-es="Arquitectura fullstack · Liderazgo técnico y mentoría · Diseño de interfaces" data-en="Fullstack architecture · Technical leadership &amp; mentoring · Interface design">Arquitectura fullstack · Liderazgo técnico y mentoría · Diseño de interfaces</div></div>
     </div>
   </section>
 
   <!-- ===== Contacto ===== -->
   <section class="contact-band" id="contacto">
     <div class="rise">
-      <p class="contact-big">Hablemos.</p>
+      <p class="contact-big" data-es="Hablemos." data-en="Let's talk.">Hablemos.</p>
       <a class="contact-mail" href="mailto:ram.v98@hotmail.com">ram.v98@hotmail.com</a>
 
       <div class="contact-grid">
         <div>
-          <span>México</span>
+          <span data-es="México" data-en="Mexico">México</span>
           <a href="tel:+525610416893">+52 56 1041 6893</a>
         </div>
         <div>
@@ -729,13 +826,13 @@
           <a href="https://wa.me/573138572883" target="_blank" rel="noopener">+57 313 857 2883</a>
         </div>
         <div>
-          <span>Red</span>
+          <span data-es="Red" data-en="Network">Red</span>
           <a href="https://linkedin.com/in/raphaelmartinez" target="_blank" rel="noopener">LinkedIn</a><br>
           <a href="https://github.com/AndreyMartinez" target="_blank" rel="noopener">GitHub</a>
         </div>
         <div>
-          <span>Base</span>
-          Ciudad de México
+          <span data-es="Base" data-en="Based in">Base</span>
+          <span class="cval" data-es="Ciudad de México" data-en="Mexico City">Ciudad de México</span>
         </div>
       </div>
     </div>
@@ -743,12 +840,61 @@
 
   <footer>
     <span>Raphael Martínez Velásquez</span>
-    <span>Ingeniero de Software Senior · Tech Lead</span>
+    <span data-es="Ingeniero de Software Senior · Tech Lead" data-en="Senior Software Engineer · Tech Lead">Ingeniero de Software Senior · Tech Lead</span>
   </footer>
 
 </main>
 
 <script>
+(function(){
+  // ---------- Tema (claro / oscuro) ----------
+  var themeSwitch = document.getElementById('themeSwitch');
+
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    themeSwitch.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+  }
+
+  var storedTheme = null;
+  try { storedTheme = localStorage.getItem('theme'); } catch (e) {}
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(storedTheme || (systemDark ? 'dark' : 'light'));
+
+  themeSwitch.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // ---------- Idioma (ES / EN) ----------
+  var langSwitch = document.getElementById('langSwitch');
+  var translated = document.querySelectorAll('[data-es]');
+  var TITLES = {
+    es: 'Raphael Martínez — Ingeniero de Software Senior',
+    en: 'Raphael Martínez — Senior Software Engineer'
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    translated.forEach(function(el){
+      var text = el.getAttribute('data-' + lang);
+      if (text != null) el.textContent = text;
+    });
+    langSwitch.setAttribute('aria-checked', lang === 'en' ? 'true' : 'false');
+    document.title = TITLES[lang] || TITLES.es;
+  }
+
+  var storedLang = null;
+  try { storedLang = localStorage.getItem('lang'); } catch (e) {}
+  applyLang(storedLang || 'es');
+
+  langSwitch.addEventListener('click', function(){
+    var next = document.documentElement.lang === 'en' ? 'es' : 'en';
+    applyLang(next);
+    try { localStorage.setItem('lang', next); } catch (e) {}
+  });
+})();
+
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
